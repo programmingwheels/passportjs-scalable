@@ -1,0 +1,130 @@
+<html>
+<head>
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <!-- Font Awesome CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<style>
+    .util-center {
+        margin: auto;
+    }
+
+    .util-max-512px {
+        max-width: 512px;
+    }
+
+    .util-spacing-h--40px {
+        margin-top: 40px;
+        margin-bottom: 40px
+    }
+    .util-no-decoration {
+        text-decoration: none;
+    }
+    #btn-fab{
+       margin-left:40px;
+       
+    }
+</style>
+
+<body class="mdl-color--blue-grey-50">
+
+  <!-- MDL navigation container -->
+   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+
+   <header class="mdl-layout__header">
+     <div class="mdl-layout__header-row">
+       <!-- Title of the Header -->
+       <span class="mdl-layout-title">Title(Fixed Header)</span>
+       <!-- Spacer, to align items to right -->
+       <div class="mdl-layout-spacer"></div>
+       <!-- Navigation links, hidden on smaller displays -->
+       <nav class="mdl-navigation mdl-layout--large-screen-only">
+
+       <a class="mdl-navigation__link" href="/logout">Logout</a>
+       </nav>
+     </div>
+   </header>
+
+
+
+
+   <main class="mdl-layout__content">
+     <div class="page-content">
+        <div id="btn-fab">
+           <a href="./add-student" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored util-spacing-h--40px">
+             <i class="material-icons">add</i>
+           </a>
+
+        </div>
+
+
+
+       <div class="mdl-grid">
+         <%
+         if(success.length){
+           %>
+           <b class="mdl-color-text--accent"><%=success %></b>
+
+           <%
+         }
+
+         %>
+
+         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp util-center util-spacing-h--40px">
+              <thead>
+                <tr>
+                  <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                  <th class="mdl-data-table__cell--non-numeric">First Name</th>
+                  <th class="mdl-data-table__cell--non-numeric">Last Name</th>
+                  <th>Age</th>
+                  <th class="mdl-data-table__cell--non-numeric">School</th>
+                </tr>
+              </thead>
+              <tbody>
+
+               <%
+                for(var i=0;i<students.length;i++){
+                   %>
+                   <!-- Row 1 -->
+                   <tr>
+                     <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                     <td class="mdl-data-table__cell--non-numeric"><%=students[i].first_name%></td>
+                     <td class="mdl-data-table__cell--non-numeric"><%=students[i].last_name%></td>
+                     <td><%=students[i].age%></td>
+                     <td class="mdl-data-table__cell--non-numeric"><%=students[i].school%></td>
+                     <td class="mdl-data-table__cell--non-numeric"><a href="<%='./view/'+students[i]._id%>">view</a></td>
+                     <td class="mdl-data-table__cell--non-numeric"><a href="<%='./delete/'+students[i]._id%>">delete</a></td>
+
+                   </tr>
+
+                   <%
+                }
+
+               %>
+
+
+
+
+              </tbody>
+            </table>
+
+       </div>
+
+
+     </div>
+   </main>
+
+ </div>
+
+
+
+<!-- Material Design Lite JavaScript -->
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+
+</body>
+</html>

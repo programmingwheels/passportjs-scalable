@@ -1,0 +1,106 @@
+<html>
+   <head>
+      <!-- Material Design Lite CSS -->
+      <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+      <!-- Font Awesome CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+      <!-- Material Design icon font -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   </head>
+   <style>
+      .util-center {
+      margin: auto;
+      }
+      .util-max-512px {
+      max-width: 512px;
+      }
+      .util-spacing-h--40px {
+      margin-top: 40px;
+      margin-bottom: 40px
+      }
+      .util-no-decoration {
+      text-decoration: none;
+      }
+   </style>
+   <body class="mdl-color--blue-grey-50">
+      <!-- MDL navigation container -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+         <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+               <!-- Title of the Header -->
+               <span class="mdl-layout-title">Student Details</span>
+               <!-- Spacer, to align items to right -->
+               <div class="mdl-layout-spacer"></div>
+               <!-- Navigation links, hidden on smaller displays -->
+               <nav class="mdl-navigation mdl-layout--large-screen-only">
+                  <a class="mdl-navigation__link" href="/logout">Logout</a>
+               </nav>
+            </div>
+         </header>
+         <main class="mdl-layout__content">
+            <div id ="mycard">
+
+               <div class="demo-card-wide mdl-card mdl-shadow--2dp util-center util-spacing-h--40px">
+                  <div class="mdl-card__title">
+                     <h2 class="mdl-card__title-text">Student details</h2>
+
+                  </div>
+
+                  <div class="mdl-card__supporting-text ">
+
+                     <form action="/update-student" method="post">
+                        <%
+                        if(error.length){
+                          %>
+                          <b class="mdl-color-text--accent"><%=error %></b>
+
+                          <%
+                       }else if(success.length){
+                          %>
+                          <b class="mdl-color-text--accent"><%=success %></b>
+
+                          <%
+                       }
+                        %>
+
+                        <div>
+                           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" name="first_name" value="<%=student.first_name%>" type="text" >
+                              <label class="mdl-textfield__label" >First Name</label>
+                           </div>
+                           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" value="<%=student.last_name%>" name="last_name" type="text" >
+                              <label class="mdl-textfield__label" >Last Name</label>
+                           </div>
+                        </div>
+
+                        <div >
+                           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" name="age" value="<%=student.age%>" type="number" >
+                              <label class="mdl-textfield__label" for="sample3">Age</label>
+                           </div>
+                           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" value="<%=student.school%>" name="school" type="text" >
+                              <label class="mdl-textfield__label" >School Name</label>
+                           </div>
+                           <input type="hidden" value="<%=student.id%>" name="id" />
+                        </div>
+                        <!-- Colored raised button -->
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                          Save
+                        </button>
+
+
+
+
+
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </main>
+      </div>
+      <!-- Material Design Lite JavaScript -->
+      <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+   </body>
+</html>
